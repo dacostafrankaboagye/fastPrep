@@ -78,9 +78,9 @@ Sample Output
   - else: continue the main loop
   - return 0 : when it come out of the main loop : 
 
-# Solution - 1
+## Solution - 1
   
-  ## Solution - Java
+  ### Java
   ```java
   class Result {
   
@@ -154,7 +154,7 @@ Sample Output
       }
   }
   ```
-  ## Solution - Python
+  ### Python
   ```py
   # Equivalent Python code from the Java solution
   def fillStack(myStack, h):
@@ -219,23 +219,25 @@ Sample Output
       return 0
   ```
 ## Solution 2
-```py
-def equalStacks(h1, h2, h3):
-    s1 = sum(h1)
-    s2 = sum(h2)
-    s3 = sum(h3)
-    
-    while h1 and h2 and h3:
-        m = min(s1, s2, s3)
-        while s1 > m:
-            s1 = s1 - h1.pop(0)
-        while s2 > m:
-            s2 = s2 - h2.pop(0)
-        while s3 > m:
-            s3 = s3 - h3.pop(0)
-        
-        if s1 == s2 == s3:
-            return s1 
-    return 0
-```
+  
+  ### Python
+  ```py
+  def equalStacks(h1, h2, h3):
+      s1 = sum(h1)
+      s2 = sum(h2)
+      s3 = sum(h3)
+      
+      while h1 and h2 and h3:
+          m = min(s1, s2, s3)
+          while s1 > m:
+              s1 = s1 - h1.pop(0)
+          while s2 > m:
+              s2 = s2 - h2.pop(0)
+          while s3 > m:
+              s3 = s3 - h3.pop(0)
+          
+          if s1 == s2 == s3:
+              return s1 
+      return 0
+  ```
 
