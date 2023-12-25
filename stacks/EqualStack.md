@@ -48,7 +48,7 @@ int h3[n3]: the third array of heights
 
 Returns
 int: the height of the stacks when they are equalized
-
+```
 Sample Input
 STDIN       Function
 -----       --------
@@ -56,7 +56,7 @@ STDIN       Function
 3 2 1 1 1   h1 = [3, 2, 1, 1, 1]
 4 3 2       h2 = [4, 3, 2]
 1 1 4 1     h3 = [1, 1, 4, 1]
-
+```
 Sample Output
 5
 
