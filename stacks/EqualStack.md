@@ -178,15 +178,7 @@ def equalStacks(h1, h2, h3):
             stack3.pop() 
     return maxHeight
 
-# Another version of the code above
-
-def fillStack(myStack, h):
-    stackSum = 0
-    for i in range(len(h)-1, -1, -1):
-        stackSum += h[i]
-        myStack.append(stackSum)
-        
-    
+# Another version of the code above 
 def fill_stack(my_stack, h):
     stack_sum = 0
     for height in reversed(h):
