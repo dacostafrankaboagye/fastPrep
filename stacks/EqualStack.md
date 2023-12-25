@@ -241,3 +241,61 @@ Sample Output
       return 0
   ```
 
+### Java
+```java
+class Result {
+
+    public static void fillStack(Stack<Integer> stack1, List<Integer> h1){
+        int stackSum = 0;
+        for(int i=h1.size()-1; i >=0; i--){
+            stackSum = h1.get(i);
+            stack1.push(stackSum);
+        }
+    }
+    public static int mySum(List<Integer> myList){
+        int result = 0;
+        for(int i : myList){
+            result += i;
+        }
+        return result;
+    }
+
+
+    public static int equalStacks(List<Integer> h1, List<Integer> h2, List<Integer> h3) {
+
+        int s1 = mySum(h1);
+        int s2 = mySum(h2);
+        int s3 = mySum(h3);
+
+        Stack<Integer> st1 = new Stack<>();
+        Stack<Integer> st2 = new Stack<>();
+        Stack<Integer> st3 = new Stack<>();
+
+        fillStack(st1, h1);
+        fillStack(st2, h2);
+        fillStack(st3, h3);
+
+        while(!st1.isEmpty() && !st2.isEmpty() && !st3.isEmpty()){
+
+            int m = Math.min(s1, Math.min(s2, s3));
+
+            while(s1 > m){
+                s1 = s1 - st1.pop();
+            }
+            while(s2 > m){
+                s2 = s2 - st2.pop();
+            }
+            while(s3 > m){
+                s3 = s3 - st3.pop();
+            }
+            if(s1 == s2 && s1 == s3){
+                return s1;
+            }
+        }
+
+        return 0;
+
+    }
+
+}
+```
