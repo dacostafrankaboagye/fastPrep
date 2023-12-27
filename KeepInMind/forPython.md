@@ -7,3 +7,10 @@ ab = dict(sorted(my_dict.items(), reverse=True))
 
 ```
 
+## covert to a dictionary
+```py
+# height and names are list
+height_dict = dict(zip(heights,names))
+
+```
+
