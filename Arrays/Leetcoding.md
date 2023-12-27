@@ -24,17 +24,27 @@
   
   1 <= nums.length <= 1000
   -10^6 <= nums[i] <= 10^6
-  
+
+  ### Solution - java
   ```java
-  class Solution {
-      public int[] runningSum(int[] nums) {
-          int[] result = new int[nums.length];
-          int theSum = 0;
-          for(int i=0; i<nums.length; i++){
-              theSum += nums[i];
-              result[i] = theSum;
-          }
-          return result;
-      }
-  }
+
+/*
+decalre a variable - sum and int[] result
+loop through and add each nums[i] to sum -> then add it to result[]
+*/
+class Solution {
+    public int[] runningSum(int[] nums) {
+        int[] result = new int[nums.length];
+        int theSum = 0;
+        for(int i=0; i<nums.length; i++){
+            theSum += nums[i];
+            result[i] = theSum;
+        }
+        return result;
+    }
+}
+
+/*
+
+*/
   ```
