@@ -60,9 +60,8 @@
       }
   
   }
-    ```
-
-  ### Solution - python
+ ```
+### Solution - python
   ```py
   
   class Solution:
