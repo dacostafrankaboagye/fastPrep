@@ -28,23 +28,47 @@
   ### Solution - java
   ```java
 
-/*
-decalre a variable - sum and int[] result
-loop through and add each nums[i] to sum -> then add it to result[]
-*/
-class Solution {
-    public int[] runningSum(int[] nums) {
-        int[] result = new int[nums.length];
-        int theSum = 0;
-        for(int i=0; i<nums.length; i++){
-            theSum += nums[i];
-            result[i] = theSum;
-        }
-        return result;
-    }
-}
+  /*
+  decalre a variable - sum and int[] result
+  loop through and add each nums[i] to sum -> then add it to result[]
+  */
+  
+  class Solution {
+  
+      public int[] runningSum(int[] nums) {
+          int[] result = new int[nums.length];
+          int theSum = 0;
+          for(int i=0; i<nums.length; i++){
+              theSum += nums[i];
+              result[i] = theSum;
+          }
+          return result;
+      }
+  }
+  
+  
+  /*
+  in place
+  */
+  class Solution {
+  
+      public int[] runningSum(int[] nums) {
+          for(int i=1; i<nums.length; i++){
+              nums[i] = nums[i-1] + nums[i];
+          }
+          return nums;
+      }
+  
+  }
+    ```
 
-/*
-
-*/
+  ### Solution - python
+  ```py
+  
+  class Solution:
+      def runningSum(self, nums: List[int]) -> List[int]:
+          for i in range(1, len(nums)):
+              nums[i] = nums[i-1] + nums[i]
+          return nums
+  
   ```
