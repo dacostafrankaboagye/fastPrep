@@ -16,6 +16,18 @@ for(Object i : new Object[]{s1, s2, s3}){
     System.out.println(i);
 }
 
+
+
+// Using Java Streams
+Arrays.stream(myIntArray).forEach(num -> System.out.print(num + " "));
+
+
+
+// Using Arrays.toString() method - more readable and conise
+System.out.println(Arrays.toString(myIntArray));
+
+
+
 ```
 
 ## initialising 
