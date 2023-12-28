@@ -113,3 +113,90 @@
           
         
   ```
+---
+
+## 2399. Check Distances Between Same Letters - Easy
+You are given a 0-indexed string s consisting of only lowercase English letters,
+where each letter in s appears exactly twice. 
+You are also given a 0-indexed integer array distance of length 26.
+Each letter in the alphabet is numbered from 0 to 25 (i.e. 'a' -> 0, 'b' -> 1, 'c' -> 2, ... , 'z' -> 25).
+In a well-spaced string, the number of letters between 
+the two occurrences of the ith letter is distance[i]. 
+If the ith letter does not appear in s, then distance[i] can be ignored.
+
+Return true if s is a well-spaced string, otherwise return false.
+
+Example 1:
+
+Input: s = "abaccb", distance = [1,3,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Output: true
+Explanation:
+- 'a' appears at indices 0 and 2 so it satisfies distance[0] = 1.
+- 'b' appears at indices 1 and 5 so it satisfies distance[1] = 3.
+- 'c' appears at indices 3 and 4 so it satisfies distance[2] = 0.
+Note that distance[3] = 5, but since 'd' does not appear in s, it can be ignored.
+Return true because s is a well-spaced string.
+
+Example 2:
+
+Input: s = "aa", distance = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+Output: false
+Explanation:
+- 'a' appears at indices 0 and 1 so there are zero letters between them.
+Because distance[0] = 1, s is not a well-spaced string.
+ 
+Constraints:
+
+2 <= s.length <= 52
+s consists only of lowercase English letters.
+Each letter appears in s exactly twice.
+distance.length == 26
+0 <= distance[i] <= 50
+
+### Solution - python
+```py
+class Solution:
+    def checkDistances(self, s: str, distance: List[int]) -> bool:
+        my_dict = {}
+        for i in range(len(s)):
+            letter = s[i]
+            if letter in my_dict:
+                calculated_distance = i - my_dict[letter] - 1
+                distance_in_list = distance[ord(letter) - 97]
+                if calculated_distance == distance_in_list:
+                    my_dict.pop(letter)
+                else:
+                    return False
+            else:
+                my_dict[letter] = i
+        if my_dict: return False
+        else: return True
+```
+### Solution - java [converting the python code]
+```java
+class Solution {
+    public boolean checkDistances(String s, int[] distance) {
+        HashMap<Character, Integer> my_dict = new HashMap<>();
+        for(int i=0; i<s.length(); i++){
+            char letter = s.charAt(i);
+            if(my_dict.containsKey(letter)){
+                int calculated_distance = i - my_dict.get(letter) - 1;
+                int distance_in_list = distance[(int)letter - 97];
+                if(calculated_distance == distance_in_list){
+                    my_dict.remove(letter);
+                }else{
+                    return false;
+                }
+
+            }else{
+                my_dict.put(letter, i);
+            }
+        }
+        if(my_dict.isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
+```
