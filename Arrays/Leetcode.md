@@ -181,7 +181,7 @@ class Solution {
             char letter = s.charAt(i);
             if(my_dict.containsKey(letter)){
                 int calculated_distance = i - my_dict.get(letter) - 1;
-                int distance_in_list = distance[(int)letter - 97];
+                int distance_in_list = distance[(int)letter - 97]; // you can do letter - 'a'
                 if(calculated_distance == distance_in_list){
                     my_dict.remove(letter);
                 }else{
@@ -197,6 +197,7 @@ class Solution {
         }else{
             return false;
         }
+        // can be replaced with >> return my_dict.isEmpty()
     }
 }
 ```
