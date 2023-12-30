@@ -287,3 +287,19 @@ n == nums1.length == nums2.length
           return True
       
   ```
+  ### solution - java
+  ```java
+  
+  class Solution {
+      public boolean canMakeArithmeticProgression(int[] arr) {
+          Arrays.sort(arr);
+          int fixedDiff = arr[1] - arr[0];
+          for(int i=0; i<arr.length - 1; i++){
+              if(arr[i+1] - arr[i] != fixedDiff){
+                  return false;
+              }
+          }
+          return true;
+      }
+  }
+  ```
