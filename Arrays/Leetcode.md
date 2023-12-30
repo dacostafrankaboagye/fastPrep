@@ -7,23 +7,25 @@
   
   Example 1:
   
-  Input: nums = [1,2,3,4]
-  Output: [1,3,6,10]
-  Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+    Input: nums = [1,2,3,4]
+    Output: [1,3,6,10]
+    Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+  
   Example 2:
   
-  Input: nums = [1,1,1,1,1]
-  Output: [1,2,3,4,5]
-  Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
+    Input: nums = [1,1,1,1,1]
+    Output: [1,2,3,4,5]
+    Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
+  
   Example 3:
   
-  Input: nums = [3,1,2,10,1]
-  Output: [3,4,6,16,17]
-  
+    Input: nums = [3,1,2,10,1]
+    Output: [3,4,6,16,17]
+    
   Constraints:
   
-  1 <= nums.length <= 1000
-  -10^6 <= nums[i] <= 10^6
+    1 <= nums.length <= 1000
+    -10^6 <= nums[i] <= 10^6
 
   ### Solution - java
   ```java
@@ -84,24 +86,31 @@
   
   Example 1:
   
-  Input: names = ["Mary","John","Emma"], heights = [180,165,170]
-  Output: ["Mary","Emma","John"]
-  Explanation: Mary is the tallest, followed by Emma and John.
+    Input: names = ["Mary","John","Emma"], heights = [180,165,170]
+    Output: ["Mary","Emma","John"]
+    
+  Explanation: 
+  
+    Mary is the tallest, followed by Emma and John.
+  
   Example 2:
   
-  Input: names = ["Alice","Bob","Bob"], heights = [155,185,150]
-  Output: ["Bob","Alice","Bob"]
-  Explanation: The first Bob is the tallest, followed by Alice and the second Bob.
+    Input: names = ["Alice","Bob","Bob"], heights = [155,185,150]
+    Output: ["Bob","Alice","Bob"]
+  
+  Explanation: 
+  
+    The first Bob is the tallest, followed by Alice and the second Bob.
    
   Constraints:
   
-  n == names.length == heights.length
-  1 <= n <= 103
-  1 <= names[i].length <= 20
-  1 <= heights[i] <= 105
-  names[i] consists of lower and upper case English letters.
-  All the values of heights are distinct.
-  
+    n == names.length == heights.length
+    1 <= n <= 103
+    1 <= names[i].length <= 20
+    1 <= heights[i] <= 105
+    names[i] consists of lower and upper case English letters.
+    All the values of heights are distinct.
+    
   ### solution -python
   ```py
   
@@ -117,41 +126,50 @@
 
 ## 2399. Check Distances Between Same Letters - Easy
   You are given a 0-indexed string s consisting of only lowercase English letters,
+  
   where each letter in s appears exactly twice. 
+  
   You are also given a 0-indexed integer array distance of length 26.
+  
   Each letter in the alphabet is numbered from 0 to 25 (i.e. 'a' -> 0, 'b' -> 1, 'c' -> 2, ... , 'z' -> 25).
+  
   In a well-spaced string, the number of letters between 
+  
   the two occurrences of the ith letter is distance[i]. 
+  
   If the ith letter does not appear in s, then distance[i] can be ignored.
   
   Return true if s is a well-spaced string, otherwise return false.
   
   Example 1:
-  
-  Input: s = "abaccb", distance = [1,3,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-  Output: true
+    
+    Input: s = "abaccb", distance = [1,3,0,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    Output: true
+    
   Explanation:
-  - 'a' appears at indices 0 and 2 so it satisfies distance[0] = 1.
-  - 'b' appears at indices 1 and 5 so it satisfies distance[1] = 3.
-  - 'c' appears at indices 3 and 4 so it satisfies distance[2] = 0.
-  Note that distance[3] = 5, but since 'd' does not appear in s, it can be ignored.
-  Return true because s is a well-spaced string.
+  
+    - 'a' appears at indices 0 and 2 so it satisfies distance[0] = 1.
+    - 'b' appears at indices 1 and 5 so it satisfies distance[1] = 3.
+    - 'c' appears at indices 3 and 4 so it satisfies distance[2] = 0.
+    Note that distance[3] = 5, but since 'd' does not appear in s, it can be ignored.
+    Return true because s is a well-spaced string.
   
   Example 2:
   
-  Input: s = "aa", distance = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-  Output: false
+    Input: s = "aa", distance = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    Output: false
   Explanation:
-  - 'a' appears at indices 0 and 1 so there are zero letters between them.
-  Because distance[0] = 1, s is not a well-spaced string.
-   
+  
+    - 'a' appears at indices 0 and 1 so there are zero letters between them.
+    Because distance[0] = 1, s is not a well-spaced string.
+     
   Constraints:
   
-  2 <= s.length <= 52
-  s consists only of lowercase English letters.
-  Each letter appears in s exactly twice.
-  distance.length == 26
-  0 <= distance[i] <= 50
+    2 <= s.length <= 52
+    s consists only of lowercase English letters.
+    Each letter appears in s exactly twice.
+    distance.length == 26
+    0 <= distance[i] <= 50
   
   ### Solution - python
   ```py
@@ -216,7 +234,9 @@
   A sparse vector is a vector that has mostly zero values, you should store the sparse 
   vector efficiently and compute the dot product between two SparseVector.
   
-  Follow up: What if only one of the vectors is sparse?
+  Follow up:
+  
+    What if only one of the vectors is sparse?
   
   Example 1:
     
@@ -226,6 +246,7 @@
     Output: 8
   
   Explanation: 
+  
     v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
     
     v1.dotProduct(v2) = 1 * 0 + 0 * 3 + 0 * 0 + 2 * 4 + 3 * 0 = 8
@@ -238,6 +259,7 @@
     Output: 0
   
   Explanation: 
+  
     v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
     
     v1.dotProduct(v2) = 0 * 0 + 1 * 0 + 0 * 0 + 0 * 0 + 0 * 2 = 0
@@ -384,25 +406,30 @@ public class QnA{
   
   Example 1:
   
-  Input: arr = [3,5,1]
+    Input: arr = [3,5,1]
   
-  Output: true
+    Output: true
+    
+  Explanation: 
   
-  Explanation: We can reorder the elements as [1,3,5] or [5,3,1] with differences 2 and -2 respectively, between each consecutive elements.
+    We can reorder the elements as [1,3,5] or [5,3,1] with differences 2 and -2 respectively, between each consecutive elements.
 
   
   Example 2:
   
-  Input: arr = [1,2,4]
-  Output: false
-  Explanation: There is no way to reorder the elements to obtain an arithmetic progression.
+    Input: arr = [1,2,4]
+    Output: false
+    
+  Explanation: 
+  
+    There is no way to reorder the elements to obtain an arithmetic progression.
 
    
   Constraints:
   
-  2 <= arr.length <= 1000
-  
-  -106 <= arr[i] <= 106
+    2 <= arr.length <= 1000
+    
+    -106 <= arr[i] <= 106
 
 ---
   ### solution - python
@@ -439,7 +466,9 @@ public class QnA{
 ## 1874. Minimize Product Sum of Two Arrays - Medium
 
   The product sum of two equal-length arrays a and b 
+  
   is equal to the sum of a[i] * b[i] 
+  
   for all 0 <= i < a.length (0-indexed).
   
   For example, 
