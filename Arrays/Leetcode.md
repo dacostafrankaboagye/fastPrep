@@ -210,8 +210,8 @@
   
   Implement class SparseVector:
   
-  - SparseVector(nums) Initializes the object with the vector nums
-  - dotProduct(vec) Compute the dot product between the instance of SparseVectorand vec
+    - SparseVector(nums) Initializes the object with the vector nums
+    - dotProduct(vec) Compute the dot product between the instance of SparseVectorand vec
 
   A sparse vector is a vector that has mostly zero values, you should store the sparse 
   vector efficiently and compute the dot product between two SparseVector.
@@ -219,36 +219,155 @@
   Follow up: What if only one of the vectors is sparse?
   
   Example 1:
+    
+    Input: 
+      nums1 = [1,0,0,2,3], nums2 = [0,3,0,4,0]
+    
+    Output: 8
   
-  Input: nums1 = [1,0,0,2,3], nums2 = [0,3,0,4,0]
-  
-  Output: 8
-  
-  Explanation: v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
-  
-  v1.dotProduct(v2) = 1 * 0 + 0 * 3 + 0 * 0 + 2 * 4 + 3 * 0 = 8
+  Explanation: 
+    v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
+    
+    v1.dotProduct(v2) = 1 * 0 + 0 * 3 + 0 * 0 + 2 * 4 + 3 * 0 = 8
   
   Example 2:
   
-  Input: nums1 = [0,1,0,0,0], nums2 = [0,0,0,0,2]
+    Input: 
+      nums1 = [0,1,0,0,0], nums2 = [0,0,0,0,2]
+    
+    Output: 0
   
-  Output: 0
-  
-  Explanation: v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
-  
-  v1.dotProduct(v2) = 0 * 0 + 1 * 0 + 0 * 0 + 0 * 0 + 0 * 2 = 0
-  
+  Explanation: 
+    v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
+    
+    v1.dotProduct(v2) = 0 * 0 + 1 * 0 + 0 * 0 + 0 * 0 + 0 * 2 = 0
+    
   Example 3:
   
-  Input: nums1 = [0,1,0,0,2,0,0], nums2 = [1,0,0,0,3,0,4]
-  
-  Output: 6
+    Input: nums1 = [0,1,0,0,2,0,0], nums2 = [1,0,0,0,3,0,4]
+    
+    Output: 6
   
   Constraints:
-  - n == nums1.length == nums2.length
-  - 1 <= n <= 10^5
-  - 0 <= nums1[i], nums2[i] <= 100
+    - n == nums1.length == nums2.length
+    - 1 <= n <= 10^5
+    - 0 <= nums1[i], nums2[i] <= 100
 
+### solution - java
+```java
+
+/*
+- create a hash map to hold {index:value} of non zero elements
+- idea: multiplying by 0 -> result in 0 
+
+e.g.           index   0 1 2 3 4 
+        int[] nums1 = {1,0,0,2,3};
+        int[] nums2 = {0,3,0,4,0};
+
+        hashmap of nums1
+        {   
+            0 : 1,
+            3 : 2,
+            4 : 3
+        }
+        hashmap of nums2
+        {
+            1 : 3,
+            3 : 4
+        }
+
+- now we have non zero element with index
+
+- in the dotProduct method
+    - after constructing the sparse vector, if any of the len of the sparsevec is 0; then return 0
+    - loop through - say v1 : 
+        if the key in v1 can also be found in v2 : then compute dot product and increment your result 
+            - (what this means is that, the element in the v1 and v2 are not zero : that why their indexes appear in both v1 and v2)
+
+*/
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+class SparseVector{
+
+    HashMap<Integer, Integer> myHashMap;
+    
+    SparseVector(int[] nums){
+
+        myHashMap = new HashMap<>();
+
+        int i = 0;
+
+        while(i < nums.length){
+            if(nums[i] != 0){
+                myHashMap.put(i, nums[i]);                
+            }
+            i++;
+        }
+    }
+
+    // return the dot product of two sparse vector
+    public int dotProduct(SparseVector vec){
+
+        int result = 0;
+
+        if(myHashMap.size() == 0 || vec.myHashMap.size() == 0){
+            return 0;
+        }
+
+        for(int index : myHashMap.keySet()){
+            if( vec.myHashMap.containsKey(index) ){
+                result += myHashMap.get(index) * vec.myHashMap.get(index);
+            }
+        }
+        return result;
+    }
+
+    // a method to print out the value 
+    static void printSparseVector(SparseVector vec){
+        for(Map.Entry<Integer,Integer> entry : vec.myHashMap.entrySet() ){
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+            System.out.println(key + " : " + value);
+        }
+        System.out.println("done");
+    }
+}
+
+
+public class QnA{
+
+    public static void main(String[] args) {
+
+        /*
+        // ans = 8
+        int[] nums1 = {1,0,0,2,3};
+        int[] nums2 = {0,3,0,4,0}; 
+        */
+
+        /*
+        // ans = 0
+        int[] nums1 = {0,1,0,0,0};
+        int[] nums2 = {0,0,0,0,2};*/
+        
+        // ans = 6
+        int[] nums1 = {0,1,0,0,2,0,0};
+        int[] nums2 = {1,0,0,0,3,0,4};
+
+        SparseVector v1 = new SparseVector(nums1);
+        SparseVector v2 = new SparseVector(nums2);
+
+        // SparseVector.printSparseVector(v1);
+        // SparseVector.printSparseVector(v2);
+
+        int ans = v1.dotProduct(v2);  
+        System.out.println(ans);
+    }
+}
+
+```
 
 ---
 
