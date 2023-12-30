@@ -226,7 +226,7 @@
   
   Explanation: v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
   
-  v1.dotProduct(v2) = 1*0 + 0*3 + 0*0 + 2*4 + 3*0 = 8
+  v1.dotProduct(v2) = 1 * 0 + 0 * 3 + 0 * 0 + 2 * 4 + 3 * 0 = 8
   
   Example 2:
   
@@ -236,7 +236,7 @@
   
   Explanation: v1 = SparseVector(nums1) , v2 = SparseVector(nums2)
   
-  v1.dotProduct(v2) = 0*0 + 1*0 + 0*0 + 0*0 + 0*2 = 0
+  v1.dotProduct(v2) = 0 * 0 + 1 * 0 + 0 * 0 + 0 * 0 + 0 * 2 = 0
   
   Example 3:
   
