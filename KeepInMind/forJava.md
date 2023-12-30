@@ -42,3 +42,12 @@ List<Integer> integerList = Arrays.asList(1, 2, 3, 4, 5);
 List<Integer> myList = Arrays.asList(1, 2, 3, 4, 5);
 int sum = myList.stream().reduce(0, Integer::sum);
 ```
+
+## Sorting
+```java
+
+int[] numbers = {5, 2, 9, 1, 5, 6};
+Arrays.sort(numbers);
+
+
+```
