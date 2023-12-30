@@ -49,5 +49,33 @@ int sum = myList.stream().reduce(0, Integer::sum);
 int[] numbers = {5, 2, 9, 1, 5, 6};
 Arrays.sort(numbers);
 
+```
+
+## HashMap Example
+```java
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        // Create a HashMap with Integer keys and Integer values
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+
+        // Add some key-value pairs to the HashMap
+        hashMap.put(1, 100);
+        hashMap.put(2, 200);
+        hashMap.put(3, 300);
+        hashMap.put(4, 400);
+
+        // Iterate over the entries and print keys and values
+        for (Map.Entry<Integer, Integer> entry : hashMap.entrySet()) {
+            Integer key = entry.getKey();
+            Integer value = entry.getValue();
+
+            System.out.println("Key: " + key + ", Value: " + value);
+        }
+    }
+}
 
 ```
