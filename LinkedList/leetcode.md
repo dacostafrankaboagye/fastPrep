@@ -29,33 +29,80 @@
     Number of nodes will not exceed 30.
     Each node's value is either 0 or 1.
 
-### solution - python
-```py
+  ### solution - python
+  ```py
+  
+  # Definition for singly-linked list.
+  # class ListNode:
+  #     def __init__(self, val=0, next=None):
+  #         self.val = val
+  #         self.next = next
+  
+  class Solution:
+      
+      def getDecimalValue1(self, head: ListNode) -> int:
+          current = head
+          strAns = '0b'
+          while current is not None:
+              strAns += str(current.val)
+              current = current.next
+          return int(strAns, base=0)
+      
+      # another way
+      def getDecimalValue(self, head: ListNode) -> int:
+          ans = 0
+          while head:
+              ans = (2 * ans) + head.val
+              head = head.next
+          return ans
+  
+  ```
 
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+### solution - java
+```java
 
-class Solution:
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+
+class Solution {
     
-    def getDecimalValue1(self, head: ListNode) -> int:
-        current = head
-        strAns = '0b'
-        while current is not None:
-            strAns += str(current.val)
-            current = current.next
-        return int(strAns, base=0)
-    
-    # another way
-    def getDecimalValue(self, head: ListNode) -> int:
-        ans = 0
-        while head:
-            ans = (2 * ans) + head.val
-            head = head.next
-        return ans
+    public int getDecimalValue1(ListNode head) {
+        ListNode current = head;
+        String strAns = "";
+        while(current != null){
+            strAns = strAns + Integer.toString(current.val);
+            current = current.next;
+        }
+        return Integer.parseInt(strAns, 2);
+        
+    }
+
+    /*
+    the other solution
+    */
 
 
+    public int getDecimalValue(ListNode head) {
+        ListNode current = head;
+        int ans = 0;
+        while(current != null){
+            ans = (ans * 2 )+ current.val;
+            current = current.next;
+        }
+        return ans;
+        
+    }
+
+
+}
 
 ```
