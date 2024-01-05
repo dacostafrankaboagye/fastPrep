@@ -79,3 +79,13 @@ public class HashMapExample {
 }
 
 ```
+// random double numbers
+
+## Stream
+```java
+//
+Stream<Double> infiniteRandomNumbers = Stream.generate(Math::random);
+
+infiniteRandomNumbers.limit(10).forEach(System.out::println);
+
+```
