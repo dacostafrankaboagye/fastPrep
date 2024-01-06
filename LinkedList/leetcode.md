@@ -239,3 +239,131 @@ class Solution:
         
         
 ```
+
+---
+
+## 206. Reverse Linked List - Easy
+
+    Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+    
+
+    Example 1:
+
+
+        Input: head = [1,2,3,4,5]
+        Output: [5,4,3,2,1]
+
+
+    Example 2:
+
+
+        Input: head = [1,2]
+        Output: [2,1]
+
+
+    Example 3:
+
+        Input: head = []
+        Output: []
+    
+
+    Constraints:
+
+        The number of nodes in the list is the range [0, 5000].
+        -5000 <= Node.val <= 5000
+    
+
+    Follow up
+        A linked list can be reversed either iteratively or recursively. Could you implement both?
+
+### solution - python
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+'''
+current = head
+prev = current 
+
+temp = current.next
+current.next = prev
+prev = current
+current = temp
+
+'''
+
+class Solution:
+    def reverseList_one(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        current = head
+        previous = None
+        while current:
+            temp = current.next
+            current.next = previous
+            previous = current
+            current = temp 
+        return previous
+        
+    # recurssive
+
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        return self.reverseList_recurssive(head, previous=None)
+
+    def reverseList_recurssive(self, head, previous=None):
+        if head is None:
+            return previous
+
+        temp = head.next
+        head.next = previous
+        # previous = head
+        # head = temp
+        '''
+        or return reverseList_recurssive(head=temp, prevoius=head)
+        and remove the variables
+        ''' 
+
+        return self.reverseList_recurssive(head=temp, previous=head)
+```
+
+### solution - java
+```java
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode current = head;
+        ListNode prev = null;
+        while(current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
+
+    public static ListNode reverseList_recurssive(ListNode head, ListNode previous) {
+        if(head == null){
+            return previous;
+        }
+        ListNode next = head.next;
+        head.next = previous;
+        return reverseList_recurssive(next, head);
+    }
+
+
+}
+
+```

@@ -46,6 +46,32 @@ def middleNode(head):
     return head.val
 
 
+
+def reverseList(head):
+    current = head
+    previous = None
+    while current:
+        temp = current.next
+        current.next = previous
+        previous = current
+        current = temp 
+    return previous
+
+def reverseList_recurssive(head, previous=None):
+    if head is None:
+        return previous
+
+    temp = head.next
+    head.next = previous
+    # previous = head
+    # head = temp
+    '''
+    or return reverseList_recurssive(head=temp, prevoius=head)
+    and remove the variables
+    ''' 
+
+    return reverseList_recurssive(head=temp, previous=head)
+
 ```
 
 ## Linked List - Java
@@ -106,6 +132,31 @@ public static int middleNode(ListNode head) {
     return head.val;
 
 
+}
+
+
+
+// reverse - iterative
+public static ListNode reverseList(ListNode head) {
+    ListNode current = head;
+    ListNode prev = null;
+    while(current != null) {
+        ListNode next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
+}
+
+// reverse - recurssive
+public static ListNode reverseList_recurssive(ListNode head, ListNode previous) {
+    if(head == null){
+        return previous;
+    }
+    ListNode next = head.next;
+    head.next = previous;
+    return reverseList_recurssive(next, head);
 }
 
 ```

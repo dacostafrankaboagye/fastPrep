@@ -5,19 +5,29 @@ class ListNode:
         self.val = val
         self.next = next
 
-
+'''
 a = ListNode(1)
 b = ListNode(0)
 c = ListNode(1)
 # d = ListNode(1)
 # e = ListNode(0)
-# f = ListNode(1)
+# f = ListNode(1)'''
+
+
+
+
+a = ListNode(10)
+b = ListNode(20)
+c = ListNode(30)
+d = ListNode(40)
+e = ListNode(50)
+f = ListNode(60)
 
 a.next = b
 b.next = c
-# c.next = d
-# d.next = e
-# e.next = f
+c.next = d
+d.next = e
+e.next = f
 
 #print - out
 def printOut(head):
@@ -62,7 +72,35 @@ def middleNode(head):
     return head.val
 
 
-print(middleNode(a))
+def reverseList(head):
+    current = head
+    previous = None
+    while current:
+        temp = current.next
+        current.next = previous
+        previous = current
+        current = temp 
+    return previous
+
+def reverseList_recurssive(head, previous=None):
+    if head is None:
+        return previous
+
+    temp = head.next
+    head.next = previous
+    # previous = head
+    # head = temp
+    '''
+    or return reverseList_recurssive(head=temp, prevoius=head)
+    and remove the variables
+    ''' 
+
+    return reverseList_recurssive(head=temp, previous=head)
+
+
+
+printOut(a)
+printOut(reverseList_recurssive(a))
 
 
 

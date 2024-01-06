@@ -84,7 +84,27 @@ public class Test {
 
 
     }
+
+    public static ListNode reverseList(ListNode head) {
+        ListNode current = head;
+        ListNode prev = null;
+        while(current != null) {
+            ListNode next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        return prev;
+    }
     
+    public static ListNode reverseList_recurssive(ListNode head, ListNode previous) {
+        if(head == null){
+            return previous;
+        }
+        ListNode next = head.next;
+        head.next = previous;
+        return reverseList_recurssive(next, head);
+    }
 
     public static void main(String[] args) {
 
@@ -109,7 +129,13 @@ public class Test {
         // System.out.println(getNodeLength(a));
 
         // middle node
-        System.out.println(middleNode(a));
+        // System.out.println(middleNode(a));
+
+
+        // reverse List
+        printOut(a);
+        // printOut(reverseList(a));
+        printOut(reverseList_recurssive(a, null));
         
 
          
