@@ -1,5 +1,5 @@
 
-
+/*
 class ListNode {
     int val;
     ListNode next;
@@ -142,9 +142,180 @@ public class Test {
   
 
     }
+} */
+
+
+
+//=====================================
+
+class ListNode{
+    int key;
+    ListNode next;
+    ListNode(int key){
+        this.key = key;
+        this.next = null;
+    }
 }
 
+class MyHashSet {
+    private ListNode hashset[];
 
+    public MyHashSet() {
+        hashset = new ListNode[10000];
+    }
+
+    private int hashFunction(int key){
+        return key % 10000;
+    }
+    
+    public void add(int key) {
+        int index = hashFunction(key);
+        ListNode current = hashset[index];
+        if (current == null) {
+            hashset[index] = new ListNode(key);
+            return ;
+        }
+        if(current.key == key){
+            return ;
+        }
+        while(current.next != null){
+            if(current.key == key){
+                return;
+            }
+            current = current.next;
+        }
+        current.next = new ListNode(key);
+
+    }
+    
+    public void remove(int key) {
+        int index = hashFunction(key);
+        ListNode current = hashset[index];
+        if(current == null){
+            return;
+        }
+        if(current.key == key){
+            hashset[index] = current.next;
+            return;
+        }
+
+        while(current.next != null){
+            if(current.next.key == key){
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
+        }
+    }
+    
+    public boolean contains(int key) {
+        int index = hashFunction(key);
+        ListNode current = hashset[index];
+        while(current != null){
+            if(current.key == key){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+}
+
+/*
+class Node {
+    int key;
+    Node next;
+
+    public Node(int key) {
+        this.key = key;
+        this.next = null;
+    }
+}
+
+class MyHashSet {
+    private int bucketSize = 1000;
+    private Node[] buckets;
+
+    public MyHashSet() {
+        buckets = new Node[bucketSize];
+    }
+
+    public void add(int key) {
+        int index = key % bucketSize;
+        Node current = buckets[index];
+
+        // Check if the key already exists
+        while (current != null) {
+            if (current.key == key) {
+                return; // Key already exists, do nothing
+            }
+            current = current.next;
+        }
+
+        // Key doesn't exist, add a new node to the beginning of the linked list
+        Node newNode = new Node(key);
+        newNode.next = buckets[index];
+        buckets[index] = newNode;
+    }
+
+
+    public void remove(int key) {
+        int index = key % bucketSize;
+        Node current = buckets[index];
+
+        if (current == null) {
+            return;
+        }
+
+        if (current.key == key) {
+            buckets[index] = current.next;
+            return;
+        }
+
+        while (current.next != null) {
+            if (current.next.key == key) {
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
+        }
+    }
+
+    public boolean contains(int key) {
+        int index = key % bucketSize;
+        Node current = buckets[index];
+
+        while (current != null) {
+            if (current.key == key) {
+                return true;
+            }
+            current = current.next;
+        }
+
+        return false;
+    }
+}*/
+
+
+
+
+class Test{
+
+    public static void main(String[] args) {
+
+        MyHashSet myHashSet = new MyHashSet();
+        myHashSet.add(1);
+        myHashSet.add(2);
+        System.out.println(myHashSet.contains(1));  // Output: true
+        System.out.println(myHashSet.contains(3));  // Output: false
+        myHashSet.add(2);
+        System.out.println(myHashSet.contains(2));  // Output: true
+        myHashSet.remove(2);
+        System.out.println(myHashSet.contains(2));  // Output: false
+    
+        
+    }
+}
 
 
 

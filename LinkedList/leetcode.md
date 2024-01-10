@@ -367,3 +367,227 @@ class Solution {
 }
 
 ```
+
+---
+
+## 705. Design HashSet - Easy
+
+Design a HashSet without using any built-in hash table libraries.
+
+Implement MyHashSet class:
+
+    void add(key) Inserts the value key into the HashSet.
+    bool contains(key) Returns whether the value key exists in the HashSet or not.
+    void remove(key) Removes the value key in the HashSet. If key does not exist in the HashSet, do nothing.
+ 
+
+Example 1:
+
+    Input
+    ["MyHashSet", "add", "add", "contains", "contains", "add", "contains", "remove", "contains"]
+    [[], [1], [2], [1], [3], [2], [2], [2], [2]]
+    Output
+    [null, null, null, true, false, null, true, null, false]
+
+Explanation
+    MyHashSet myHashSet = new MyHashSet();
+    myHashSet.add(1);      // set = [1]
+    myHashSet.add(2);      // set = [1, 2]
+    myHashSet.contains(1); // return True
+    myHashSet.contains(3); // return False, (not found)
+    myHashSet.add(2);      // set = [1, 2]
+    myHashSet.contains(2); // return True
+    myHashSet.remove(2);   // set = [1]
+    myHashSet.contains(2); // return False, (already removed)
+ 
+
+Constraints:
+
+    0 <= key <= 106
+    At most 104 calls will be made to add, remove, and contains.
+
+### solution - py
+```py
+'''
+my hashset
+
+index | linkedlist (the actaul key)
+0      1 -> 2 -> 3 -> 4 -> NULL
+1
+2
+.
+.
+.
+9999
+
+because : 10^4 calls can be made
+hash function
+    - key % len(hashset)
+
+    with this I can have say::
+    if key = 10001 then % 10000 = 1
+    if key = 20001 then % 10000 = 1
+    if key = 30001 then % 10000 = 1
+    if key = 2 then % 10000 = 2
+    if key = 10002 then % 10000 = 2
+    
+    now if I added all those keys to the hashset
+        index | linkedlist (the actaul key)
+        0      
+        1       10001 -> 20001 -> 30001 -> Null
+        2        2 -> 10002 -> Null
+        .
+        .
+        .
+        9999
+
+    
+        all will be at the same index but different values - reason for the linkedlist
+
+
+        
+    
+'''
+class ListNode:
+    
+    def __init__(self, key):
+        self.key = key
+        self.next = None
+
+class MyHashSet:
+
+    def __init__(self):
+        # creating a dummy node for the fixed sized calls we have
+        self.myHashSet = [ListNode(0) for i in range(10000)]
+      
+
+    def _hashFunction(self, key):
+        return key % len(self.myHashSet)
+
+    def add(self, key: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myHashSet[index]
+        while current.next:
+            if current.next.key == key:
+                return
+            current = current.next
+        current.next = ListNode(key)
+        
+    def remove(self, key: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myHashSet[index]
+        while current.next:
+            if current.next.key == key:
+                current.next = current.next.next
+                return
+            current = current.next
+        
+    def contains(self, key: int) -> bool:
+        index = self._hashFunction(key)
+        current = self.myHashSet[index]
+        while current.next:
+            if current.next.key == key:
+                return True
+            current = current.next
+        return False
+
+```
+
+### solution - java
+```java
+
+class ListNode{
+    int key;
+    ListNode next;
+    ListNode(int key){
+        this.key = key;
+        this.next = null;
+    }
+}
+
+class MyHashSet {
+    private ListNode hashset[];
+
+    public MyHashSet() {
+        hashset = new ListNode[10000];
+    }
+
+    private int hashFunction(int key){
+        return key % 10000;
+    }
+    
+    public void add(int key) {
+        int index = hashFunction(key);
+        ListNode current = hashset[index];
+        if (current == null) {
+            hashset[index] = new ListNode(key);
+            return ;
+        }
+        if(current.key == key){
+            return ;
+        }
+        while(current.next != null){
+            if(current.key == key){
+                return;
+            }
+            current = current.next;
+        }
+        current.next = new ListNode(key);
+
+    }
+    
+    public void remove(int key) {
+        int index = hashFunction(key);
+        ListNode current = hashset[index];
+        if(current == null){
+            return;
+        }
+        if(current.key == key){
+            hashset[index] = current.next;
+            return;
+        }
+
+        while(current.next != null){
+            if(current.next.key == key){
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
+        }
+    }
+    
+    public boolean contains(int key) {
+        int index = hashFunction(key);
+        ListNode current = hashset[index];
+        while(current != null){
+            if(current.key == key){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+}
+
+/*
+
+class Test{
+
+    public static void main(String[] args) {
+
+        MyHashSet myHashSet = new MyHashSet();
+        myHashSet.add(1);
+        myHashSet.add(2);
+        System.out.println(myHashSet.contains(1));  // Output: true
+        System.out.println(myHashSet.contains(3));  // Output: false
+        myHashSet.add(2);
+        System.out.println(myHashSet.contains(2));  // Output: true
+        myHashSet.remove(2);
+        System.out.println(myHashSet.contains(2));  // Output: false
+    
+        
+    }
+}
+*/
+
+```

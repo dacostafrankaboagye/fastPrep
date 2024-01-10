@@ -1,17 +1,16 @@
 
-
+'''
 class ListNode:
     def __init__(self, val = 0, next=None):
         self.val = val
         self.next = next
 
-'''
 a = ListNode(1)
 b = ListNode(0)
 c = ListNode(1)
 # d = ListNode(1)
 # e = ListNode(0)
-# f = ListNode(1)'''
+# f = ListNode(1)
 
 
 
@@ -90,10 +89,10 @@ def reverseList_recurssive(head, previous=None):
     head.next = previous
     # previous = head
     # head = temp
-    '''
-    or return reverseList_recurssive(head=temp, prevoius=head)
-    and remove the variables
-    ''' 
+    
+    # or return reverseList_recurssive(head=temp, prevoius=head)
+    # and remove the variables
+   
 
     return reverseList_recurssive(head=temp, previous=head)
 
@@ -101,8 +100,95 @@ def reverseList_recurssive(head, previous=None):
 
 printOut(a)
 printOut(reverseList_recurssive(a))
-
+'''
 
 
 
 # ====================================
+'''
+my hashset
+
+index | linkedlist (the actaul key)
+0      1 -> 2 -> 3 -> 4 -> NULL
+1
+2
+.
+.
+.
+9999
+
+because : 10^4 calls can be made
+hash function
+    - key % len(hashset)
+
+    with this I can have say::
+    if key = 10001 then % 10000 = 1
+    if key = 20001 then % 10000 = 1
+    if key = 30001 then % 10000 = 1
+    if key = 2 then % 10000 = 2
+    if key = 10002 then % 10000 = 2
+    
+    now if I added all those keys to the hashset
+        index | linkedlist (the actaul key)
+        0      
+        1       10001 -> 20001 -> 30001 -> Null
+        2        2 -> 10002 -> Null
+        .
+        .
+        .
+        9999
+
+    
+        all will be at the same index but different values - reason for the linkedlist
+
+
+        
+    
+'''
+
+class ListNode:
+    
+    def __init__(self, key):
+        self.key = key
+        self.next = None
+
+class MyHashSet:
+
+    def __init__(self):
+        # creating a dummy node for the fixed sized calls we have
+        self.myHashSet = [ListNode(0) for i in range(10000)]
+      
+
+    def _hashFunction(self, key):
+        return key % len(self.myHashSet)
+
+    def add(self, key: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myHashSet[index]
+        while current.next:
+            if current.next.key == key:
+                return
+            current = current.next
+        current.next = ListNode(key)
+        
+    def remove(self, key: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myHashSet[index]
+        while current.next:
+            if current.next.key == key:
+                current.next = current.next.next
+                return
+            current = current.next
+        
+    def contains(self, key: int) -> bool:
+        index = self._hashFunction(key)
+        current = self.myHashSet[index]
+        while current.next:
+            if current.next.key == key:
+                return True
+            current = current.next
+        return False
+  
+
+
+
