@@ -601,3 +601,151 @@ class Test{
 */
 
 ```
+
+---
+
+## 706. Design HashMap - Easy
+
+Design a HashMap without using any built-in hash table libraries.
+
+Implement the MyHashMap class:
+
+    MyHashMap() initializes the object with an empty map.
+    void put(int key, int value) inserts a (key, value) pair into the HashMap. If the key already exists in the map, update the corresponding value.
+    int get(int key) returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key.
+    void remove(key) removes the key and its corresponding value if the map contains the mapping for the key.
+ 
+
+Example 1:
+
+Input
+
+    ["MyHashMap", "put", "put", "get", "get", "put", "get", "remove", "get"]
+    [[], [1, 1], [2, 2], [1], [3], [2, 1], [2], [2], [2]]
+
+Output
+
+    [null, null, null, 1, -1, null, 1, null, -1]
+
+Explanation
+
+    MyHashMap myHashMap = new MyHashMap();
+    myHashMap.put(1, 1); // The map is now [[1,1]]
+    myHashMap.put(2, 2); // The map is now [[1,1], [2,2]]
+    myHashMap.get(1);    // return 1, The map is now [[1,1], [2,2]]
+    myHashMap.get(3);    // return -1 (i.e., not found), The map is now [[1,1], [2,2]]
+    myHashMap.put(2, 1); // The map is now [[1,1], [2,1]] (i.e., update the existing value)
+    myHashMap.get(2);    // return 1, The map is now [[1,1], [2,1]]
+    myHashMap.remove(2); // remove the mapping for 2, The map is now [[1,1]]
+    myHashMap.get(2);    // return -1 (i.e., not found), The map is now [[1,1]]
+
+ 
+
+Constraints:
+
+    0 <= key, value <= 106
+    At most 104 calls will be made to put, get, and remove.
+
+
+
+### solution - python
+```py
+'''
+
+there will be collison
+when hash function returns the same result for different keys
+multiple values could be stored at the same location
+- to solve it
+    - open addressing
+    - chanining
+
+    
+1 : 20
+1001  : 30
+
+index : value (key, value)
+0   
+1   : 0 -> (1, 20) -> (1001, 30)
+2
+.
+.
+.
+9999
+
+'''
+
+class ListNode:
+    def __init__(self, key = -1, value=-1):
+        self.key = key
+        self.value =value
+        self.next = None
+
+class MyHashMap:
+
+    def __init__(self):
+        self.myhasmap = [ListNode(0,0) for i in range(10000)]
+
+    def _hashFunction(self, key):
+        return key % 10000
+
+    def put(self, key: int, value: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myhasmap[index]
+        while current.next:
+            if current.next.key == key:
+                current.next.value = value
+                return
+            current= current.next
+        current.next = ListNode(key, value)
+
+    def get(self, key: int) -> int:
+        index = self._hashFunction(key)
+        current = self.myhasmap[index]
+        while current.next:
+            if current.next.key == key:
+                return current.next.value
+            current = current.next
+        return -1
+
+    def remove(self, key: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myhasmap[index]
+        while current.next:
+            if current.next.key == key:
+                current.next = current.next.next
+                return
+            current = current.next
+
+    def printOut(self, index):
+        current = self.myhasmap[index]
+        ans = str(current.next.key)+ " : "
+        while current.next:
+            ans  = ans + str(current.next.value) + " -> "
+            current = current.next
+        print(ans)
+        
+
+        
+
+
+# Your MyHashMap object will be instantiated and called as such:
+obj = MyHashMap()
+obj.put(1,1)
+obj.put(2,2 )
+print(obj.get(1))
+print(obj.get(3))
+obj.put(2,1)
+
+obj.printOut(2)
+
+# obj.get(2)
+# obj.remove(2)
+# obj.get(2)
+
+# print(obj.get(10001))
+# obj.remove(10001)
+# print(obj.get(10001))
+
+
+```
+

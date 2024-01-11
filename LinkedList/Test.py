@@ -144,8 +144,9 @@ hash function
 
         
     
-'''
 
+
+#============================================
 class ListNode:
     
     def __init__(self, key):
@@ -190,5 +191,118 @@ class MyHashSet:
         return False
   
 
+'''
 
 
+'''
+
+hash map
+
+0   = 0 -> 20000 -> 30000 ->
+1
+2
+.
+.
+9999
+
+'''
+
+'''
+
+there will be collison
+when hash function returns the same result for different keys
+multiple values could be stored at the same location
+- to solve it
+    - open addressing
+    - chanining
+
+    
+1 : 20
+1001  : 30
+
+index : value (key, value)
+0   
+1   : 0 -> (1, 20) -> (1001, 30)
+2
+.
+.
+.
+9999
+
+
+    
+'''
+
+
+
+class ListNode:
+    def __init__(self, key = -1, value=-1):
+        self.key = key
+        self.value =value
+        self.next = None
+
+class MyHashMap:
+
+    def __init__(self):
+        self.myhasmap = [ListNode(0,0) for i in range(10000)]
+
+    def _hashFunction(self, key):
+        return key % 10000
+
+    def put(self, key: int, value: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myhasmap[index]
+        while current.next:
+            if current.next.key == key:
+                current.next.value = value
+                return
+            current= current.next
+        current.next = ListNode(key, value)
+
+    def get(self, key: int) -> int:
+        index = self._hashFunction(key)
+        current = self.myhasmap[index]
+        while current.next:
+            if current.next.key == key:
+                return current.next.value
+            current = current.next
+        return -1
+
+    def remove(self, key: int) -> None:
+        index = self._hashFunction(key)
+        current = self.myhasmap[index]
+        while current.next:
+            if current.next.key == key:
+                current.next = current.next.next
+                return
+            current = current.next
+
+    def printOut(self, index):
+        current = self.myhasmap[index]
+        ans = str(current.next.key)+ " : "
+        while current.next:
+            ans  = ans + str(current.next.value) + " -> "
+            current = current.next
+        print(ans)
+        
+
+        
+
+
+# Your MyHashMap object will be instantiated and called as such:
+obj = MyHashMap()
+obj.put(1,1)
+obj.put(2,2 )
+print(obj.get(1))
+print(obj.get(3))
+obj.put(2,1)
+
+obj.printOut(2)
+
+# obj.get(2)
+# obj.remove(2)
+# obj.get(2)
+
+# print(obj.get(10001))
+# obj.remove(10001)
+# print(obj.get(10001))
