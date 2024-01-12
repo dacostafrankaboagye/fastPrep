@@ -231,9 +231,9 @@ index : value (key, value)
 
 
     
-'''
 
 
+#==========================================================================
 
 class ListNode:
     def __init__(self, key = -1, value=-1):
@@ -306,3 +306,39 @@ obj.printOut(2)
 # print(obj.get(10001))
 # obj.remove(10001)
 # print(obj.get(10001))
+'''
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+
+    def mergeTwoLists(self, list1:ListNode, list2:ListNode) :
+        # If the first linked list is empty
+        if not list1:
+            return list2
+        # If the second linked list is empty
+        elif not list2:
+            return list1
+        # Pick the smaller value between the two lists values
+        else:
+            if list1.val < list2.val:
+                list1.next = self.mergeTwoLists(list1.next, list2)
+                return list1
+            else:
+                list2.next = self.mergeTwoLists(list1, list2.next)
+                return list2
+        
+
+        
+
+        
+
+
+
+
+
+
