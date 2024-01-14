@@ -306,7 +306,7 @@ obj.printOut(2)
 # print(obj.get(10001))
 # obj.remove(10001)
 # print(obj.get(10001))
-'''
+
 
 
 class ListNode:
@@ -334,6 +334,157 @@ class Solution:
         
 
         
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+#==========================================================================
+
+
+'''
+set listA pointer
+set listB pointer
+
+while listA_pointer and listB_pointer is not null
+    - if the id(listA) in the myHashMap:
+        - return listA
+    - elif the id(listB) in the myHashMap:
+        - return listB
+    - else:
+        add the id(listA)
+        listA = listA.next 
+        add the id(listB)
+        listB = listB.next
+    
+     
+while listA_pointer is not null:
+    - if the id(listA) is in myHashMap:
+        return ListA
+    - else:
+        add the id(listA)
+
+while listB_pointer is not null:
+    - if the id(listB) is in myHashMap:
+        return ListAB
+    - else:
+        add the id(listB)
+        
+return null
+
+'''
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    def getIntersectionNode(self, headA, headB):
+        headA_pointer = headA
+        headB_pointer = headB
+        hashSet = set()        
+        while headA_pointer:
+            hashSet.add(id(headA_pointer))
+            headA_pointer = headA_pointer.next
+        
+        while headB_pointer:
+            if id(headB_pointer) in hashSet:
+                return headB_pointer
+            headB_pointer = headB_pointer.next
+
+        return None
+    
+    def printOut(self, head):
+        current = head
+        while current:
+            print(current.val, end=" -> ")
+            current = current.next
+        print("None")
+        
+
+
+
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+# Testing the solution
+
+solution = Solution()
+'''
+node1 = ListNode(2)
+node2 = ListNode(2)
+node3 = ListNode(4)
+node4 = ListNode(5)
+
+node1.next = node2
+node2.next = node3
+node3.next = node4
+
+
+nodeA = ListNode(2)
+nodeB = ListNode(2)
+nodeC = ListNode(4)
+nodeD = ListNode(5)
+
+
+nodeA.next = nodeB
+nodeB.next = nodeC
+nodeC.next = nodeD
+'''
+
+node1 = ListNode(2)
+node2 = ListNode(2)
+node3 = ListNode(4)
+node4 = ListNode(5)
+node5 = ListNode(4)
+
+nodeA = ListNode(2)
+nodeB = ListNode(2)
+
+
+
+node1.next = node2
+node2.next = node3
+
+nodeA.next = nodeB
+nodeB.next = node3
+
+node3.next = node4
+node4.next = node5
+
+
+
+
+
+
+
+
+solution.printOut(node1)
+solution.printOut(nodeA)
+
+intersection = solution.getIntersectionNode(node1, nodeA)
+print("\nIntersection\n")
+solution.printOut(intersection)
+
+
+
+
+
+
 
         
 
