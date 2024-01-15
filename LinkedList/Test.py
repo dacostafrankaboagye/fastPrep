@@ -383,6 +383,8 @@ return null
 
 '''
 
+
+'''
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -478,13 +480,31 @@ solution.printOut(nodeA)
 
 intersection = solution.getIntersectionNode(node1, nodeA)
 print("\nIntersection\n")
-solution.printOut(intersection)
+solution.printOut(intersection)'''
+
+#==========================================================================
+
+'''
+loop through
+result = head
+
+if current == current.next
+    -  continue
+    current = current.next.next
+else:
+    - currrent = current.next
+'''
 
 
-
-
-
-
+class Solution:
+    def deleteDuplicates(self, head):
+        current = head
+        while current and current.next:
+            if current.val == current.next.val:
+                current.next  = current.next.next
+            else:
+                current = current.next 
+        return head
 
         
 
