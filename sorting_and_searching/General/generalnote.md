@@ -33,3 +33,41 @@ public void bubbleSort(int[] arr){
 }
 
 ```
+
+---
+
+## Insertion Sort
+
+    Works like the way we sort playing cards in our hands
+
+    - divide the given array into two parts
+        - sorted and unsorted part
+
+    From the unsorted part, take the first element -> place it in the correct position in the sorted array (based on some logic)
+        - all the elements in the sorted array greater than the "first element we picked" -> shifts by ine position
+
+    - take the first element from the unsorted array
+    - compare the element with each and every element in the sorted array
+    - any element in the sorted array which is greater than the "first element" we picked-> shifts by one position
+    - if we encounter an element which is lesser than the "first element" we picked -> place the "first element" right after it
+    repwat till unsorted array is not empty
+
+    : dividing the unsorted array
+        - pick the first element -> that is sorted 
+        -> the rest is unsorted
+        -> // implement
+        -> pick the first two -> that is sorted
+        -> the rest is unsorted
+        -> // implement
+        ...
+        When comparing start from behind
+        ...
+        Time Complexity: O(n^2)
+
+
+    
+
+```java
+
+
+```
