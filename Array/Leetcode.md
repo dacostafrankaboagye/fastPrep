@@ -264,6 +264,9 @@ Constraints:
 
 ```java
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public int numIdenticalPairs(int[] nums) {
 
@@ -292,6 +295,23 @@ class Solution {
 }
 
 // Handshake in gathering -> idea
+
+class Solution {
+
+
+    public int numIdenticalPairs(int[] nums) {
+        int result = 0;
+        int n = nums.length;
+        HashMap<Integer, Integer> myHashMap = new HashMap<>();
+        for(int i=0; i<n; i++){
+            int temp =myHashMap.getOrDefault(nums[i], 0);
+            result = result + temp;
+            myHashMap.put(nums[i],  temp+1);
+        }
+        return result;
+
+    }
+}
 
 ```
 
