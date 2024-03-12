@@ -43,14 +43,20 @@ public void bubbleSort(int[] arr){
     - divide the given array into two parts
         - sorted and unsorted part
 
+    Sorting partition  |
+                       V   
+                      [3, 1, 5, 2, 6]
+
+    - one element in the sorted part
+
     From the unsorted part, take the first element -> place it in the correct position in the sorted array (based on some logic)
-        - all the elements in the sorted array greater than the "first element we picked" -> shifts by ine position
+        - all the elements in the sorted array greater than the "first element we picked" -> shifts by one position
 
     - take the first element from the unsorted array
     - compare the element with each and every element in the sorted array
     - any element in the sorted array which is greater than the "first element" we picked-> shifts by one position
     - if we encounter an element which is lesser than the "first element" we picked -> place the "first element" right after it
-    repwat till unsorted array is not empty
+    repeat till unsorted array is not empty
 
     : dividing the unsorted array
         - pick the first element -> that is sorted 
@@ -68,6 +74,57 @@ public void bubbleSort(int[] arr){
     
 
 ```java
+public void insertionSort(int[] arr){
+    int n = arr.length;
+    for(int i=1; i < n; i++){
+        int temp = arr[i];
+        int j = i - 1;
+        while(j>=0 && arr[j] > temp){
+            arr[j+1] = arr[j];
+            j = j - 1;
+        }
+        arr[j+1] = temp;
+    }
+}
 
+```
+
+---
+
+## Selection Sort
+
+    divide the array into two part - sorted part, unsorted part
+
+    Sorting partition |
+                      V   
+                      [3, 1, 5, 2, 6]
+
+    - no element in the sorted part 
+    - find the minimum element (its index) among the element in the unsorted part
+    - once the minimum is found -> swap it with the leftmost element of the partition / boundary
+        - once we do this, -> we know the minimum element is at the correct position -> it becomes part of the sorted array
+    - we repeat till all the elements are part of the sorted array
+    
+    - at each pass, one element of the unsorted part becomes part of the sorted part
+    - you will notice that after the (n-1) pass, where n is the length if the arr. The entire arr is sorted
+    
+
+```java
+
+public void selectionSort(int[] arr){
+    int n = arr.length;
+    for(int i=0; i<n-1; i++){
+        int min =i;
+        for(int j=i+1; j<n; j++){
+            if(arr[j] < arr[min]  ){
+                min = j;
+            }
+        }
+        // swap
+        int temp = arr[min];
+        arr[min] = arr[i];
+        arr[i] = temp;
+    }
+}
 
 ```
