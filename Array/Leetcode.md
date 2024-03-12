@@ -264,6 +264,35 @@ Constraints:
 
 ```java
 
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+
+        HashMap<Integer, Integer> myHashMap = new HashMap<>();
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            if (myHashMap.containsKey(nums[i])) {
+                myHashMap.put(nums[i], myHashMap.get(nums[i]) + 1);
+            }else{
+                myHashMap.put(nums[i], 1);
+            }
+                
+        }
+
+        // compute the good pairs (n * (n-1))/2
+        int result = 0;
+        for(Map.Entry<Integer, Integer> entry : myHashMap.entrySet()){
+            if(entry.getValue() > 1){
+                result = result + ((entry.getValue() * (entry.getValue()-1))/2);
+            }
+        }
+
+        return result;
+
+    }
+}
+
+// Handshake in gathering -> idea
+
 ```
 
 
