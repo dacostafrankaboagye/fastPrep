@@ -225,6 +225,28 @@ public void mergeSort(int[] arr, int low, int high){
     Note:
      - After we perform the partition, the pivot is at the correct position
 
+    // the Partiotion
+        // low, i, j, high -> pointers
+        (low to j-1) : smaller or equal to the Pivot (swap => j++ => i++)
+        (j to i-1): bigger than  the Pivot  (elements goes to => i++)
+        (i to high): elements to be traversed 
+    
+    Idea
+        - if you see an element which is greater than the pivot -> just move ahead
+
+        at every point: e.g Pivot is "3" -> the last element
+                      j           i
+                      |           |      
+        [ -3, -6, -2, 1, 6, 8, 5, 9, 3]
+           |                         |
+         low                       high
+
+        Note: 
+        (low to j-1) : has elements <= the pivot
+        (j to i-1) : has elements > the pivot
+        (i to high) : elements to the traversed
+
+        at the end: we return (j-1) : that is where the pivot will be
 ```java
 
 ```
