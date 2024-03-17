@@ -249,4 +249,43 @@ public void mergeSort(int[] arr, int low, int high){
         at the end: we return (j-1) : that is where the pivot will be
 ```java
 
+public int partition(int[] arr, int low, int high){
+    /*
+    low -> j-1 : elements <= pivot
+    j -> i-1   : elements > pivot
+    i -> high  : elements yet to be traversed
+    */
+    int i = low;
+    int j = low;
+    int pivot = arr[high];
+    while(i <= high){
+        if(arr[i] <= pivot){
+            // swap
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+
+            j++;
+        }
+        i++;
+    }
+    return j-1;
+}
+
+public void quickSort(int[] arr, int low, int high){
+
+    // base case
+    if(low < high){
+
+        int pivotIndex = partition(arr, low, high);
+    
+        // left
+        quickSort(arr, low, pivotIndex-1);
+
+        //right
+        quickSort(arr, pivotIndex+1, high);
+    }
+}
+
+
 ```
