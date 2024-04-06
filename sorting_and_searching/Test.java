@@ -8,11 +8,34 @@ import java.util.Arrays;
 
 public class Test {
 
-    public void bubbleSort(){
+    public void bubbleSort(int[] arr){
+        int n = arr.length;
+        boolean swapped;
+        for(int i=0; i<n-1; i++){
+            swapped = false;
+            for(int j=0; j<n-1-i; j++){
+                if(arr[j] > arr[j+1]){
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    swapped = true;
+                }
+            }
+            if(swapped == false){break;}
+        }
     }
 
-    public void insertionSort(){
-
+    public void insertionSort(int[] arr){
+        int n = arr.length;
+        for(int i=1; i < n; i++){
+            int temp = arr[i];
+            int j = i-1;
+            while(j >=0 && arr[j] > temp){
+                arr[j+1] = arr[j];
+                j = j - 1;
+            }
+            arr[j+1] = temp;
+        }
     }
 
     public void selectionSort(){
@@ -69,9 +92,9 @@ public class Test {
         System.out.println("Before: " + Arrays.toString(myArr));
         // myTest.bubbleSort(myArr);
         // myTest.insertionSort(myArr);
-        // myTest.selectionSort(myArr);
+        myTest.selectionSort(myArr);
         // myTest.mergeSort(myArr, 0, myArr.length-1);
-        myTest.quickSort(myArr, 0, myArr.length-1);
+        // myTest.quickSort(myArr, 0, myArr.length-1);
         System.out.println("After: " + Arrays .toString(myArr));
 
         Arrays.sort(args);
