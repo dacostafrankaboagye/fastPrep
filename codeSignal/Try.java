@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Try{
 
     static boolean isPrime(int n){
@@ -51,24 +53,32 @@ class Try{
         return sb.toString();
     }
 
-    static int solution(int n){
-        int primeNumber = nthOdd(n);
-        int stripOff = (n*(n-1))/ 2;
-        System.out.println("stripoff = " + stripOff);
-        int result = (primeNumber * primeNumber) - (4 * stripOff);
-        // if(n == 1){result = 1;}
+    static int solution(int[] statues) {
+        Arrays.sort(statues);
+        int result= 0;
+        for(int i=1; i<statues.length; i++){
+            int difference = statues[i] - statues[i-1];
+            if(difference <= 1){
+                continue;
+            }else if(difference > 1){
+                difference = difference - 1;
+            }
+
+            result += difference;
+        }
         return result;
 
     }
     
     public static void main(String[] args) {
         System.out.println("result");
+        int a[] = {6, 2, 3, 8};
 
-        System.out.println(" -> " +  solution(1));
-        System.out.println(" -> " +  solution(2));
-        System.out.println(" -> " +  solution(3));
-        System.out.println(" -> " +  solution(4));
-        System.out.println(" -> " +  solution(5));
+        System.out.println(" -> " +  solution(a));
+        // System.out.println(" -> " +  solution(2));
+        // System.out.println(" -> " +  solution(3));
+        // System.out.println(" -> " +  solution(4));
+        // System.out.println(" -> " +  solution(5));
         
 
 
