@@ -53,27 +53,27 @@ class Try{
         return sb.toString();
     }
 
-    static int solution(int[] statues) {
-        Arrays.sort(statues);
-        int result= 0;
-        for(int i=1; i<statues.length; i++){
-            int difference = statues[i] - statues[i-1];
-            if(difference <= 1){
+    static boolean solution(int[] sequence) {
+        int counter = 0;
+        for(int i=0; i<sequence.length - 1; i++){
+            if(sequence[i] < sequence[i+1]){
                 continue;
-            }else if(difference > 1){
-                difference = difference - 1;
+            }else{
+                counter++;
+                if(counter >= 2){
+                    return false;
+                }
             }
-
-            result += difference;
         }
-        return result;
+        return true;
 
     }
     
     public static void main(String[] args) {
         System.out.println("result");
-        int a[] = {6, 2, 3, 8};
-
+        // int a[] = {1, 3, 2, 1};
+        int a[] = {1, 3, 2};
+        
         System.out.println(" -> " +  solution(a));
         // System.out.println(" -> " +  solution(2));
         // System.out.println(" -> " +  solution(3));
