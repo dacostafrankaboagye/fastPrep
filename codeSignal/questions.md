@@ -159,9 +159,9 @@ static int nthOdd(int n){
 
 int solution(int n) {
     
-    int primeNumber = nthOdd(n);
+    int oddNumber = nthOdd(n);
     int stripOff = (n*(n-1))/ 2;
-    int result = (primeNumber * primeNumber) - (4 * stripOff);
+    int result = (oddNumber * oddNumber) - (4 * stripOff);
     return result;
     
 
@@ -219,10 +219,20 @@ int solution(int[] statues) {
     return result;
 }
 
+int solution(int[] statues) {
+    Arrays.sort(statues);
+    int statuesLength = statues.length;
+    int minStatus = statues[0];
+    int maxStatus = statues[statuesLength - 1];
+    int totalNumberOfElementsFromStartToEnd = (maxStatus - minStatus) + 1;
+    int numberOfElementsLeft = totalNumberOfElementsFromStartToEnd - statuesLength;
+    return numberOfElementsLeft;
+}
+
 
 ```
 
-## 
+## almostIncreasingSequence
 
     Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing sequence by removing no more than one element from the array.
 
@@ -258,6 +268,27 @@ Input/Output
     Return true if it is possible to remove one element from the array in order to get a strictly increasing sequence, otherwise return false.
 
 ```java
+
+
+
+
+boolean solution(int[] sequence) {
+    
+    int size = sequence.length;
+    int numberOfTimesItDecreases = 0;
+    
+    for(int i=0; i <size -1; i++){
+        if(sequence[i+1] <= sequence[i]){
+            numberOfTimesItDecreases++;
+            boolean skipNeighbor = i+2 < size && sequence[i+2] <= sequence[i];
+            boolean skipBack = i-1 >=0 && sequence[i+1] <= sequence[i-1];
+            if(skipNeighbor && skipBack  || numberOfTimesItDecreases >=2){return false;}
+        }
+    }
+    
+    return true;
+}
+
 
 ```
 
