@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 class Try{
 
@@ -53,28 +55,37 @@ class Try{
         return sb.toString();
     }
 
+
+    
     static boolean solution(int[] sequence) {
-        int counter = 0;
-        for(int i=0; i<sequence.length - 1; i++){
-            if(sequence[i] < sequence[i+1]){
-                continue;
-            }else{
-                counter++;
-                if(counter >= 2){
-                    return false;
-                }
+        int size = sequence.length;
+
+        int numberOfTimesItDecreases = 0;
+
+        for(int i=0; i <size -1; i++){
+            if(sequence[i+1] <= sequence[i]){
+                numberOfTimesItDecreases++;
+                boolean skipNeighbor = i+2 < size && sequence[i+2] <= sequence[i];
+                boolean skipBack = i-1 >=0 && sequence[i+1] <= sequence[i-1];
+                if(skipNeighbor && skipBack  || numberOfTimesItDecreases >=2){return false;}
             }
         }
         return true;
-
+    
+    
     }
+    
+    
     
     public static void main(String[] args) {
         System.out.println("result");
-        // int a[] = {1, 3, 2, 1};
-        int a[] = {1, 3, 2};
+        // int a[] = {1, 3, 2, 1}; // false
+        // int a[] = {1, 3, 2}; // true
+        // int a[] = {1, 2, 1, 2}; // false
+        int a[] = {-4, -3, -2, -1}; // true
         
         System.out.println(" -> " +  solution(a));
+        
         // System.out.println(" -> " +  solution(2));
         // System.out.println(" -> " +  solution(3));
         // System.out.println(" -> " +  solution(4));
