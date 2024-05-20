@@ -64,6 +64,55 @@
 ```
 
 
+## Smallest Multiple
+
+2520 is the smallest number that can be divided by each of the numbers from 1  to 10  without any remainder.
+
+What is the smallest positive number that is evenly divisible by all of the numbers from 1  to 20 ?
+
+
+  Ans : 232792560
+
+
+```java
+
+//-------------------------solution - 1
+
+static boolean canBeDividedFrom1to20(int n){
+    for(int i=1; i<=20; i++){
+        if(n%i != 0){
+            return false;
+        }
+    }
+    return true;
+}
+
+int smallestNumber = 1;
+
+while(true){
+    if(canBeDividedFrom1to20(smallestNumber)){
+        break;
+    }
+    smallestNumber +=1;
+}
+
+System.out.println("\nnumber: " + smallestNumber);
+
+//---------------------------------------------
+
+```
+
+
+
+
+
+
+
+
+
+
+
+---
 
 
 # Helpers
@@ -85,6 +134,32 @@
   }
 
 ```
+
+### LCM
+
+```java
+
+// find the LCM (Least Common Multiple) of two numbers
+
+    public static int lcm(int a, int b) {
+        return (a * b) / gcd(a, b);
+    }
+    
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
