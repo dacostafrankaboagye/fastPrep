@@ -38,9 +38,22 @@
 <p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 - 385 = 2640.</p>
 <p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
 
+  Ans: 25164150
+
 ```java
 
 
+    static double sumSquareDifference(int n){
+        // square of the sum of the first n  natural numbers
+        double sumOf_N_NaturalNumber = (n * (n + 1)) / 2;
+        double squareOfThe_sumOf_N_NaturalNumber = Math.pow(sumOf_N_NaturalNumber, 2);
+
+        // sum of the squares of the first n natural numbers
+        double sumOfTheSquaresOf_N_NaturalNumbers = ( n*(n+1)*( (2*n) + 1) ) / 6;
+
+        return squareOfThe_sumOf_N_NaturalNumber - sumOfTheSquaresOf_N_NaturalNumbers;
+
+    }
 ```
 
 
