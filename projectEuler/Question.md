@@ -71,7 +71,10 @@
 What is the smallest positive number that is evenly divisible by all of the numbers from 1  to 20 ?
 
 
-  Ans : 232792560
+    Ans : 232792560
+
+
+
 
 
 ```java
