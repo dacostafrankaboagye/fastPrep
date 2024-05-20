@@ -1,9 +1,10 @@
 
 ## Largest Prime Factor
-<p>The prime factors of $13195$ are $5, 7, 13$ and $29$.</p>
-<p>What is the largest prime factor of the number $600851475143$?</p>
+  The prime factors of $13195$ are 5, 7, 13 and 29
+  What is the largest prime factor of the number 600851475143
 
-  Ans: 6857
+
+    Ans: 6857
 
 ```java
     static BigInteger largestPrimeFactors(BigInteger n){
@@ -31,14 +32,15 @@
 
 ## Sum Square Difference
 
-<p>The sum of the squares of the first ten natural numbers is,</p>
-1^2 + 2^2 + ... + 10^2 = 385.
-<p>The square of the sum of the first ten natural numbers is,</p>
-(1 + 2 + ... + 10)^2 = 55^2 = 3025.
-<p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 - 385 = 2640.</p>
-<p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
-
-  Ans: 25164150
+  The sum of the squares of the first ten natural numbers is,
+  1^2 + 2^2 + ... + 10^2 = 385.
+  <p>The square of the sum of the first ten natural numbers is,
+  (1 + 2 + ... + 10)^2 = 55^2 = 3025.
+  <p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025 - 385 = 2640.
+  <p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
+  
+  
+    Ans: 25164150
 
 ```java
 
@@ -56,6 +58,28 @@
     }
 ```
 
+
+
+
+# Helpers
+
+---
+
+### GCD
+```java
+
+// greatest common divisor (GCD) of two numbers using the Euclidean algorithm
+
+  public static int gcd(int a, int b) {
+      // Base case: If b is 0, then GCD is a
+      if (b == 0) {
+          return a;
+      }
+      // Recursive case: Compute GCD of b and a mod b
+      return gcd(b, a % b);
+  }
+
+```
 
 
 
