@@ -29,3 +29,34 @@
     }
 ```
 
+## Sum Square Difference
+
+The sum of the squares of the first ten natural numbers is,
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msup>
+    <mn>1</mn>
+    <mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <msup>
+    <mn>2</mn>
+    <mn>2</mn>
+  </msup>
+  <mo>+</mo>
+  <mo>.</mo>
+  <mo>.</mo>
+  <mo>.</mo>
+  <mo>+</mo>
+  <msup>
+    <mn>10</mn>
+    <mn>2</mn>
+  </msup>
+  <mo>=</mo>
+  <mn>385.</mn>
+</math>
+
+
+
+
+
