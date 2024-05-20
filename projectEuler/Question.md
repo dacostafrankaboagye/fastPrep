@@ -105,13 +105,78 @@ System.out.println("\nnumber: " + smallestNumber);
 
 ```
 
+/*
 
 
+// can we make it better
+
+-> the nnumber we are checking needs to be divisible by 1
+    -> but all numbers are divisible by 1
+    -> the range then goes from
+       from:  range(1, 20)
+        to:   range(2, 20)
+
+        // 1st modification -- we start i at "2"
+        for(int i=2; i<=20; i++){
+            if(n%i != 0){
+                return false;
+            }
+        }
+        return true;
+    
+
+    What then does this mean?
+    -> for every number we check if that number is divisble by all numbers from 2, to 20
+    -> Note: from 2, to 20
+    -> meaning that if the number should be divisible by / starting at 2: then the number should be an even number right?
+
+    // 2nd Modification -- we start searching for the number from "2" to infinity
+        -> perform an increment of / by 2
+        // so we do not vene check the odd numbers
+    
+        int smallestNumber = 2;
+        while(true){
+            if(canBeDividedFrom1to20(smallestNumber)){
+                break;
+            }
+            smallestNumber +=2;
+        }
 
 
+    // lets think about it a little more
+    // the number should be divisible by all numbers from 1 to 20
+    we have already dealt with "1"
+    so the number should be divisible by all numbers from 2 to 20
+        // if it divisible by 2... that mean all the even numbers will be valid
+
+    // think of this .. 20 is part
+    // so the number should be divisible by 20 too...
+
+    // so we start searching for the number at 20
+    // and keep incrementing it by 20
+
+    // so we will end up checking 20, 40, 50, 60, .. up to the time we find the number [that can be divisible by all numbers from 2 to 20]
+
+*/
 
 
+static boolean canBeDividedFrom1to20(int n){
+    for(int i=2; i<=20; i++){
+        if(n%i != 0){
+            return false;
+        }
+    }
+    return true;
+}
 
+int smallestNumber = 20;
+
+while(true){
+    if(canBeDividedFrom1to20(smallestNumber)){
+        break;
+    }
+    smallestNumber +=20;
+}
 
 
 
