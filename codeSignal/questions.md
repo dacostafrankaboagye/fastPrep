@@ -1,5 +1,6 @@
 ## century
-    Given a year, return the century it is in. The first century spans from the year 1 up to and including the year 100, the second - from the year 101 up to and including the year 200, etc.
+    Given a year, return the century it is in. The first century spans from the year 1 up to and 
+    including the year 100, the second - from the year 101 up to and including the year 200, etc.
   Example
     
     For year = 1905, the output should be
@@ -67,7 +68,8 @@ boolean solution(String inputString) {
 
 ## adjacentElementsProduct
 
-    Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.
+    Given an array of integers, find the pair of adjacent elements that 
+    has the largest product and return that product.
 
 Example
 
@@ -116,7 +118,13 @@ int solution(int[] inputArray) {
 
         Below we will define an n-interesting polygon. Your task is to find the area of a polygon for a given n.
 
-        A 1-interesting polygon is just a square with a side of length 1. An n-interesting polygon is obtained by taking the n - 1-interesting polygon and appending 1-interesting polygons to its rim, side by side. You can see the 1-, 2-, 3- and 4-interesting polygons in the picture below.
+        A 1-interesting polygon is just a square with a side of length 1. 
+        
+        An n-interesting polygon is obtained by taking the n - 1-interesting polygon 
+        
+        and appending 1-interesting polygons to its rim, side by side. 
+        
+        You can see the 1-, 2-, 3- and 4-interesting polygons in the picture below.
 
 ![image shape area](area.png)
 
@@ -174,7 +182,17 @@ int solution(int n) {
 
 ## Make Array Consecutive 2
 
-    Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative integer size. Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue will be bigger than the previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help him figure out the minimum number of additional statues needed.
+    Ratiorg got statues of different sizes as a present from CodeMaster 
+    
+    for his birthday, each statue having an non-negative integer size. 
+    
+    Since he likes to make things perfect, he wants to arrange them from 
+    
+    smallest to largest so that each statue will be bigger than the previous 
+    
+    one exactly by 1. He may need some additional statues to be able to accomplish 
+    
+    that. Help him figure out the minimum number of additional statues needed.
 
 Example
 
@@ -199,7 +217,9 @@ Input/Output
 
     [output] integer
 
-    The minimal number of statues that need to be added to existing statues such that it contains every integer size from an interval [L, R] (for some L, R) and no other sizes.
+    The minimal number of statues that need to be added to existing 
+    
+    statues such that it contains every integer size from an interval [L, R] (for some L, R) and no other sizes.
 
 ```java
 
@@ -234,9 +254,17 @@ int solution(int[] statues) {
 
 ## almostIncreasingSequence
 
-    Given a sequence of integers as an array, determine whether it is possible to obtain a strictly increasing sequence by removing no more than one element from the array.
+    Given a sequence of integers as an array, determine whether 
+    
+    it is possible to obtain a strictly increasing 
+    
+    sequence by removing no more than one element from the array.
 
-    Note: sequence a0, a1, ..., an is considered to be a strictly increasing if a0 < a1 < ... < an. Sequence containing only one element is also considered to be strictly increasing.
+    Note: sequence a0, a1, ..., an is considered to be a 
+    
+    strictly increasing if a0 < a1 < ... < an. Sequence 
+    
+    containing only one element is also considered to be strictly increasing.
 
 Example
 
