@@ -397,6 +397,80 @@ int solution(int[][] matrix) {
 
 ```
 
+---
+
+## All Longest Strings
+
+        Given an array of strings, return another array containing all of its longest strings.
+        
+        Example
+        
+        For inputArray = ["aba", "aa", "ad", "vcd", "aba"], the output should be
+        
+        solution(inputArray) = ["aba", "vcd", "aba"].
+        
+        Input/Output
+        
+        [execution time limit] 3 seconds (java)
+        
+        [memory limit] 1 GB
+        
+        [input] array.string inputArray
+        
+        A non-empty array.
+        
+        Guaranteed constraints:
+        
+        1 ≤ inputArray.length ≤ 10,
+        
+        1 ≤ inputArray[i].length ≤ 10.
+        
+        [output] array.string
+        
+        Array of the longest strings, stored in the same order as in the inputArray.
+
+
+```java
+
+String[] solution(String[] inputArray) {
+    
+    int maxLength = -1;
+    Map<Integer, List<String>> store = new HashMap<>();
+
+    for(String s : inputArray){
+        int stringLength = s.length();
+        maxLength = Math.max(maxLength, stringLength);
+        // put into the hash map
+        store.computeIfAbsent(stringLength, k -> new ArrayList<>()).add(s);
+    }
+    
+    return store.get(maxLength).stream().toArray(String[]::new);
+
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
