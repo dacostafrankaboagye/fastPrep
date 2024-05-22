@@ -276,7 +276,9 @@ Example
     For sequence = [1, 3, 2], the output should be
     solution(sequence) = true.
 
-    You can remove 3 from the array to get the strictly increasing sequence [1, 2]. Alternately, you can remove 2 to get the strictly increasing sequence [1, 3].
+    You can remove 3 from the array to get the strictly increasing 
+    
+    sequence [1, 2]. Alternately, you can remove 2 to get the strictly increasing sequence [1, 3].
 
 
 Input/Output
@@ -293,7 +295,9 @@ Input/Output
 
     [output] boolean
 
-    Return true if it is possible to remove one element from the array in order to get a strictly increasing sequence, otherwise return false.
+    Return true if it is possible to remove one element from the array
+    
+    in order to get a strictly increasing sequence, otherwise return false.
 
 ```java
 
@@ -321,9 +325,23 @@ boolean solution(int[] sequence) {
 ```
 ## matrixElementsSum
 
-    After becoming famous, the CodeBots decided to move into a new building together. Each of the rooms has a different cost, and some of them are free, but there's a rumour that all the free rooms are haunted! Since the CodeBots are quite superstitious, they refuse to stay in any of the free rooms, or any of the rooms below any of the free rooms.
+    After becoming famous, the CodeBots decided to move into a new 
+    
+    building together. Each of the rooms has a different cost, and 
+    
+    some of them are free, but there's a rumour that all the free 
+    
+    rooms are haunted! Since the CodeBots are quite superstitious, 
+    
+    they refuse to stay in any of the free rooms, or any of the rooms below any of the free rooms.
 
-    Given matrix, a rectangular matrix of integers, where each value represents the cost of the room, your task is to return the total sum of all rooms that are suitable for the CodeBots (ie: add up all the values that don't appear below a 0).
+    Given matrix, a rectangular matrix of integers, 
+    
+    where each value represents the cost of the room, 
+    
+    your task is to return the total sum of all rooms that 
+    
+    are suitable for the CodeBots (ie: add up all the values that don't appear below a 0).
 
 Example
 
@@ -338,7 +356,9 @@ Example
 
 ![an image](mesq1.PNG)
 
-    There are several haunted rooms, so we'll disregard them as well as any rooms beneath them. Thus, the answer is 1 + 5 + 1 + 2 = 9.
+    There are several haunted rooms, so we'll disregard them 
+    
+    as well as any rooms beneath them. Thus, the answer is 1 + 5 + 1 + 2 = 9.
 
     For
 
