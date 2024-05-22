@@ -25,6 +25,9 @@ int solution(int year) {
 
 ```
 
+---
+
+
 ## check palindrome
 
     Given the string, check if it is a palindrome.
@@ -114,6 +117,7 @@ int solution(int[] inputArray) {
 ```
 
 ---
+
 ## shapeArea
 
         Below we will define an n-interesting polygon. Your task is to find the area of a polygon for a given n.
@@ -252,6 +256,8 @@ int solution(int[] statues) {
 
 ```
 
+---
+
 ## almostIncreasingSequence
 
     Given a sequence of integers as an array, determine whether 
@@ -321,6 +327,8 @@ boolean solution(int[] sequence) {
     return true;
 }
 
+
+---
 
 ```
 ## matrixElementsSum
