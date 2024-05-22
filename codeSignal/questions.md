@@ -456,6 +456,32 @@ String[] solution(String[] inputArray) {
 
 }
 
+
+
+// soln 2
+
+public static String[] solution(String[] inputArray) {
+    // Step 1: Determine the maximum length of strings in the array
+    int maxLength = 0;
+    for (String str : inputArray) {
+        if (str.length() > maxLength) {
+            maxLength = str.length();
+        }
+    }
+
+    // Step 2: Collect all strings that have the maximum length
+    ArrayList<String> longestStrings = new ArrayList<>();
+    for (String str : inputArray) {
+        if (str.length() == maxLength) {
+            longestStrings.add(str);
+        }
+    }
+
+    // Convert the list to an array and return it
+    return longestStrings.toArray(new String[0]);
+    }
+
+
 ```
 
 
