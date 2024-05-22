@@ -58,4 +58,25 @@ class Solution {
 }
 
 
+//---------- or
+
+class Solution {
+    public int getDecimalValue(ListNode head) {
+
+        ListNode current = head;
+        int result = 0;
+
+        while(current != null){
+            result  = result << 1;
+            if(current.val == 1){
+                result = result | 1;
+            }
+            current = current.next;
+        }
+
+        return result;
+        
+    }
+}
+
 ```
