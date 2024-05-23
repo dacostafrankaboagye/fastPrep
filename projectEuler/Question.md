@@ -1,4 +1,35 @@
 
+
+## 
+
+<p>A palindromic number reads the same both ways. The largest palindrome made from the product of two <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 113%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mn class="mjx-n"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn></math></mjx-assistive-mml></mjx-container>-digit numbers is <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="1" style="font-size: 113%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mn class="mjx-n"><mjx-c class="mjx-c39"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c39"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c39"></mjx-c><mjx-c class="mjx-c31"></mjx-c></mjx-mn><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-cD7"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="3"><mjx-c class="mjx-c39"></mjx-c><mjx-c class="mjx-c39"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>9009</mn><mo>=</mo><mn>91</mn><mo>×</mo><mn>99</mn></math></mjx-assistive-mml></mjx-container>.</p>
+
+
+```java
+
+static boolean isPalindrome(int prod){
+    String s = Integer.toString(prod);
+    return s.equals(new StringBuilder(s).reverse().toString());
+}
+
+static int largestPalindromicProduct(){
+    int maxPalindrome = 0;
+    for(int i=100; i< 1000; i++){
+        for(int j=100; j<1000; j++){
+            int prod = i*j;
+            if(isPalindrome(prod)){
+                maxPalindrome = Math.max(maxPalindrome, prod);
+            }
+        }
+    }
+
+    return maxPalindrome;
+}
+
+```
+
+---
+
 ## Largest Prime Factor
   The prime factors of $13195$ are 5, 7, 13 and 29
   
