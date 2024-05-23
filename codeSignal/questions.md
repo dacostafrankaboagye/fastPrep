@@ -52,6 +52,37 @@ int solution(String s1, String s2) {
 }
 
 
+//.............. or
+
+int solution(String s1, String s2) {
+
+        HashMap<Character, Integer> s1Map = new HashMap<>();
+        HashMap<Character, Integer> s2Map = new HashMap<>();
+
+        // count the frequency of the characters
+        for(char c: s1.toCharArray()){
+            s1Map.put(c, s1Map.getOrDefault(c, 0)+1);
+        }
+        for(char c: s2.toCharArray()){
+            s2Map.put(c, s2Map.getOrDefault(c, 0)+1);
+        }
+
+        int counter = 0;
+
+        // find the min
+        for(var c : s1Map.keySet()){
+            if(s2Map.containsKey(c)){
+                // find the min of the feq
+                counter += Math.min(s1Map.get(c), s2Map.get(c));
+            }
+        }
+
+        
+        return counter;
+}
+
+
+
 ```
 ---
 
