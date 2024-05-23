@@ -10,28 +10,28 @@
 ```java
 
 static boolean isPrime(int n){
-if(n <= 1){
-    return false;
-}
-for(int i=2; i<=Math.sqrt(n); i++){
-    if(n % i == 0){
-        return false;
-    }
-}
-return true;
+        if(n <= 1){
+            return false;
+        }
+        for(int i=2; i<=Math.sqrt(n); i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
 }
 
 static int nthPrime(int n){
-// n cannot be <= 0
-int number = 2;
-int primeCounter = 0;
-while(primeCounter < n){
-    if(isPrime(number)){
-        primeCounter += 1;
-    }
-    number += 1;
-}
-return number - 1;
+        // n cannot be <= 0
+        int number = 2;
+        int primeCounter = 0;
+        while(primeCounter < n){
+            if(isPrime(number)){
+                primeCounter += 1;
+            }
+            number += 1;
+        }
+        return number - 1;
 }
 
 ```
