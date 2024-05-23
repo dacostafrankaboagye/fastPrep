@@ -2,11 +2,37 @@
 ## 10001st Prime - Problem 7
 
 <p>By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.</p>
-<br>
+
 <p>What is the 10,001st prime number?</p>
 
         Answer:  104743
+        
 ```java
+
+static boolean isPrime(int n){
+if(n <= 1){
+    return false;
+}
+for(int i=2; i<=Math.sqrt(n); i++){
+    if(n % i == 0){
+        return false;
+    }
+}
+return true;
+}
+
+static int nthPrime(int n){
+// n cannot be <= 0
+int number = 2;
+int primeCounter = 0;
+while(primeCounter < n){
+    if(isPrime(number)){
+        primeCounter += 1;
+    }
+    number += 1;
+}
+return number - 1;
+}
 
 ```
 
