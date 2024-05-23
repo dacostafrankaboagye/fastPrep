@@ -1,3 +1,60 @@
+
+## commonCharacterCount
+        
+                
+        Given two strings, find the number of common characters between them.
+        
+        Example
+        
+        For s1 = "aabcc" and s2 = "adcaa", the output should be
+        solution(s1, s2) = 3.
+        
+        Strings have 3 common characters - 2 "a"s and 1 "c".
+        
+        Input/Output
+        
+        [execution time limit] 3 seconds (java)
+        
+        [memory limit] 1 GB
+        
+        [input] string s1
+        
+        A string consisting of lowercase English letters.
+        
+        Guaranteed constraints:
+        1 ≤ s1.length < 15.
+        
+        [input] string s2
+        
+        A string consisting of lowercase English letters.
+        
+        Guaranteed constraints:
+        1 ≤ s2.length < 15.
+        
+        [output] integer
+
+
+```java
+
+
+int solution(String s1, String s2) {
+        int counter = 0;
+        
+        for(int i=0; i<s1.length(); i++){
+            char s1Char = s1.charAt(i);
+            String s1CharStringValue = String.valueOf(s1Char);
+            if(s2.contains(s1CharStringValue)){
+                counter++;
+                s2 = s2.replaceFirst(s1CharStringValue, "");
+            }
+        }
+        return counter;
+}
+
+
+```
+---
+
 ## century
     Given a year, return the century it is in. The first century spans from the year 1 up to and 
     including the year 100, the second - from the year 101 up to and including the year 200, etc.
