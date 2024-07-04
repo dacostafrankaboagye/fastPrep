@@ -85,6 +85,21 @@ class Solution {
         
     }
 }
+
+// Hint: If x % 3 != 0 we can always increment or decrement x such that we only need 1 operation.
+
+        public int minimumOperations(int[] nums) {
+        int operationCounter = 0;
+        for(int i : nums){
+            if(i % 3 != 0){
+                operationCounter++;
+                
+            }
+        }
+        return operationCounter;
+        
+    }
+
 ```
 ---
 
