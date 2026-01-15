@@ -1,1 +1,35 @@
+# Compiled class files
 *.class
+
+# Java package files
+*.jar
+*.war
+*.ear
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build directories
+build/
+dist/
+target/
+out/
+
+# Logs
+*.log
